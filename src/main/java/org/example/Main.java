@@ -4,9 +4,10 @@ import java.io.IOException;
 import java.math.BigInteger;
 
 public class Main {
-    public static void main(String[] args) throws IOException, InterruptedException {
+    public static void main(String[] args){
         String link1 = "https://rutube.ru/video/26492bdd30eda9821fe906a0ff9e0e00/";//Изначальная ссылка
-        String link2 = "https://rutube.ru/video/26492bdd30eda9821fe906a0ff9e6d74/";//Повторный запуск после ошибки
+        String link2 = "https://rutube.ru/video/26492bdd30eda9821fe906a0ff9fb384";//Повторный запуск после ошибки
+
 
         String[] link1Parts = link1.split("/");
         String[] link2Parts = link2.split("/");

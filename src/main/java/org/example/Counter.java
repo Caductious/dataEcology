@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Counter {
-    public static int counter(BigInteger num1) throws IOException, InterruptedException {
+    public static int counter(BigInteger num1){
         int count = 0;
         try{
         for(long i=0; i<100000; i++){
@@ -33,12 +33,14 @@ public class Counter {
     }
 
 
-    public static void writeLog(String link, int statusCode) throws IOException {
-        FileWriter writer = new FileWriter("dataEcologyLog.txt", true);
-        LocalDateTime time = LocalDateTime.now();
-        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-        String formattedDate = time.format(format);
-        writer.write(link + ";" + statusCode + ";" + formattedDate + "\n");
-        writer.flush();
+    public static void writeLog(String link, int statusCode){
+        try(FileWriter writer = new FileWriter("dataEcologyLog.txt", true)){
+            LocalDateTime time = LocalDateTime.now();
+            DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+            String formattedDate = time.format(format);
+            writer.write(link + ";" + statusCode + ";" + formattedDate + "\n");
+        }catch (IOException e){
+            System.out.println(e);
+        }
     }
 }
